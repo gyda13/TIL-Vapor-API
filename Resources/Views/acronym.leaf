@@ -1,0 +1,32 @@
+#extend("base"):
+    #export("content"):
+  
+  
+  <center>
+<div class="card " style="max-width: 18rem;">
+  <div class="card-header bg-transparent "> <h1>#(acronym.short)</h1></div>
+  <div class="card-body ">
+    <p class="card-text">
+    <h3>#(acronym.long)</h3>
+    <hr>
+    #if(count(categories) > 0):
+    <h3>Categories</h3>
+    
+    <ul>
+    #for(category in categories):
+    <li><a href="/categories/#(category.id)">#(category.name)</a></li>
+    #endfor
+    </ul>
+    #endif
+    </p>
+  </div>
+  <div class="card-footer "><p>Created by <a href="/users/#(user.id)">#(user.name)</a></p></div>
+</div>
+</center>
+
+    #endexport
+#endextend
+
+
+
+
