@@ -1,11 +1,12 @@
 #extend("base"):
 
 #export("content"):
+ 
 <h1>Users</h1>
-
+  <div class="wrapper container mt-3">
 
   #if(count(users) > 0):
- <table class="table teble-bordered table-hover">
+<table class="table table-bordered table-hover">
    <thead class="tabel-light">
        <tr>
        <th>Username</th>
@@ -23,7 +24,7 @@
 
     </tbody>
 </table>
-
+</div>
 
 #else:
 <h2>There aren't any users yet </h2>

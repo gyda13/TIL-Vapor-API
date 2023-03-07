@@ -1,5 +1,6 @@
   #if(count(acronyms) > 0):
- <table class="table teble-bordered table-hover">
+  <div class="wrapper container mt-3">
+<table class="table table-bordered table-hover container mt-3">
    <thead class="tabel-light">
        <tr>
        <th>Short</th>
@@ -17,7 +18,7 @@
 
     </tbody>
 </table>
-
+</div>
 
 #else:
 <h2>There aren't any acronyms yet </h2>
