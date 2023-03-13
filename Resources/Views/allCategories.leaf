@@ -1,21 +1,27 @@
+
+
+
 #extend("base"):
     #export("content"):
-  
-        <h1>Categories</h1>
-          <div class="wrapper container mt-3">
+
+        <u><h1>Categories</h1></u>
+        
+          <div class="wrapper container mt-3" >
+       
+       
         #if(count(categories) > 0):
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr><th>Name</th></tr>
-                </thead>
-                <tbody>
+                <h3>Category</h3>
+          
+         
+               <ul >
                     #for(category in categories):
-                        <tr>
-                            <td><a href="/categories/#(category.id)"> #(category.name) </a></td>
-                        </tr>
+                   
+                       <li style="font-size: 26px;">
+                     <a href="/categories/#(category.id)"> #(category.name) </a>
+                  </li>
                     #endfor
-                </tbody>
-            </table>
+                 </ul>
+   
         #else:
             <h2>There aren't any categories yet</h2>
         #endif

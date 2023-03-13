@@ -2,7 +2,7 @@
 
 
     #export("content"):
-        <h1>#(category.name)</h1>
+      <u>  <h1>#(category.name)</h1></u>
 
         #extend("acronymsTable")
        

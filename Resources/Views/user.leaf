@@ -1,11 +1,10 @@
 #extend("base"):
 
 #export("content"):
-<div class="wrapper container mt-3">
-<h1>#(user.name)</h1>
+<u><h1>#(user.name)</h1></u>
 <h2>#(user.username)</h2>
 
  #extend("acronymsTable")
- </div>
+
 #endexport
 #endextend
