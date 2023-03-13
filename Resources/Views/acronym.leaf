@@ -63,7 +63,13 @@ flex-direction: column;
   </div>
   <hr>
   <div><p style="font-size: 20px;">Created by <a href="/users/#(user.id)" style="font-size: 20px;">#(user.name)</a></p></div>
+   <form method="post" action="/acronym/#(acronym.id)/delete">
+<a class="btn btn-primary" href="/acronym/#(acronym.id)/edit" role="button">Edit</a>
+ <input class="btn btn-primary" type="submit" value="Delete">
+ </form>
+   
    </div>
+   
    </div>
 
     #endexport

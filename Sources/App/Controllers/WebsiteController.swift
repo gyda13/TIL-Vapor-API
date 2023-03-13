@@ -16,6 +16,9 @@ struct WebsiteController: RouteCollection {
         routes.get("categories", use: allCategoriesHandler)
         routes.get("acronym", "create", use: createAcronymHandler)
         routes.post("acronym", "create", use: createAcronymPostHandler)
+        routes.get("acronym", ":acronymID","edit", use: editAcronymHandler)
+        routes.post("acronym", ":acronymID","edit", use: editAcronymPostHandler)
+        routes.post("acronym", ":acronymID", "delete", use: deleteAcronymPostHandler)
     }
     
     func indexHandler(_ req: Request) throws -> EventLoopFuture<View> {
@@ -84,6 +87,40 @@ struct WebsiteController: RouteCollection {
             
         }
     }
+    
+    func editAcronymHandler(_ req: Request) throws -> EventLoopFuture<View> {
+        Acronym.find(req.parameters.get("acronymID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap { acronym in
+            User.query(on: req.db).all().flatMap { users in
+                let context = EditAcronymContext(title: "Edit Acronym", acronym: acronym, users: users)
+                return req.view.render("createAcronym", context)
+            }
+            
+        }
+    }
+    
+    func editAcronymPostHandler(_ req: Request) throws -> EventLoopFuture<Response> {
+        let data = try req.content.decode(CreateAcronymData.self)
+        return Acronym.find(req.parameters.get("acronymID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap { acronym in
+            acronym.short = data.short
+            acronym.long = data.long
+            acronym.$user.id = data.userID
+            return acronym.save(on: req.db).flatMapThrowing {
+                let id = try acronym.requireID()
+                return req.redirect(to: "/acronym/\(id)")
+                
+            }
+        }
+        
+    }
+    
+    func deleteAcronymPostHandler(_ req: Request) throws -> EventLoopFuture<Response> {
+         Acronym.find(req.parameters.get("acronymID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap
+        { acronym in
+            acronym.delete(on: req.db).transform(to: req.redirect(to: "/"))
+        }
+    }
+    
+    
 }
 
 struct IndexContext: Encodable {
@@ -125,4 +162,13 @@ struct CreateAcronymContext: Encodable{
     let users: [User]
     
 }
+
+struct EditAcronymContext: Encodable{
+    let title: String
+    let acronym: Acronym
+    let users: [User]
+    let editing = true
+    
+}
+
 
