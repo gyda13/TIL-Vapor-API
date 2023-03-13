@@ -1,0 +1,28 @@
+#extend("base"):
+
+#export("content"):
+<u><h1>Create An Acronym</h1></u>
+
+<form method="post">
+
+<div class="mb-3">
+<label for="short" class="form-label">Acronym</label>
+<input type="text" class="form-control" id="short" name="short" placeholder="Enter Acronym">
+</div>
+<div class="mb-3">
+<label for="long" class="form-label">Meaning</label>
+<input type="text" class="form-control" id="long" name="long" placeholder="Enter Meaning">
+</div>
+<div class="mb-3">
+<label for="userID" class="form-label">Creator</label>
+<select class="from-select" id="userID" name="userID">
+ #for(user in users):
+ <option value="#(user.id)">#(user.name)</option>
+ #endfor
+ </select>
+</div>
+<button type="submit" class="btn btn-primary">Add Acronym</button>
+</form>
+
+#endexport
+#endextend

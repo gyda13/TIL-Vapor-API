@@ -1,5 +1,4 @@
 
-
 #extend("base"):
     #export("content"):
 
@@ -10,7 +9,7 @@ width: 400px;
 height: 500px;
 padding: 60px;
 border-radius: 10px;
-display: flex;
+
 align-items: center;
 justify-content: center;
 flex-direction: column;
@@ -18,7 +17,6 @@ flex-direction: column;
 .background .shape{
     height: 250px;
     width: 250px;
-    position: absolute;
     border-radius: 50%;
 }
 .shape:first-child{
@@ -38,8 +36,10 @@ flex-direction: column;
     right: -60px;
     bottom: -20px;
 }
+
 </style>
 
+</br></br>
      <div class="background">
             <div class="shape"></div>
                   <div class="shape"></div>
@@ -62,7 +62,7 @@ flex-direction: column;
     #endif
   </div>
   <hr>
-  <div><p>Created by <a href="/users/#(user.id)">#(user.name)</a></p></div>
+  <div><p style="font-size: 20px;">Created by <a href="/users/#(user.id)" style="font-size: 20px;">#(user.name)</a></p></div>
    </div>
    </div>
 

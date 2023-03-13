@@ -119,4 +119,5 @@ struct AcronymController: RouteCollection {
 struct CreateAcronymData: Content {
     let short: String
     let long: String
+    let userID: UUID
 }

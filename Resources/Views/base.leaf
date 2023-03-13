@@ -92,6 +92,9 @@ width: 80%;
 a {
 color: #52b69a;
 }
+u {
+color: #b5e48c;
+}
  </style>
 
 </head>
@@ -111,8 +114,9 @@ color: #52b69a;
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 <li class="nav-item"><a href="/" class="nav-link #if(title == "Homepage"): active #endif">Acronyms</a></li>
 
-<li class="nav-item"><a href="/users" class="nav-link #if(title == "All Users"): active #endif" href="/users">Users</a></li>
-<li class="nav-item"><a href="/categories" class="nav-link #if(title == "All Categories"): active #endif" href="/categories">Categories</a></li>
+<li class="nav-item"><a href="/users" class="nav-link #if(title == "All Users"): active #endif">Users</a></li>
+<li class="nav-item"><a href="/categories" class="nav-link #if(title == "All Categories"): active #endif">Categories</a></li>
+<li class="nav-item"><a href="/acronym/create"  class="nav-link #if(title == "Create an Acronym"): active #endif">Create an Acronym</a></li>
 </ul>
 </div>
 </div>

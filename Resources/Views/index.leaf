@@ -3,7 +3,7 @@
 
 
 #export("content"):
-<h1>Acronyms</h1>
+<u><h1>Acronyms</h1></u>
 
 
 #extend("acronymsTable")
