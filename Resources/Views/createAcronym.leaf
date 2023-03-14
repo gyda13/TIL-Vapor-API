@@ -18,21 +18,7 @@
 
 >
 </div>
-<div class="mb-3">
-<label for="userID" class="form-label">Creator</label>
-<select class="from-select" id="userID" name="userID">
- #for(user in users):
- <option value="#(user.id)"
- #if(editing):
- #if(acronym.user.id == user.id):
- selected
- #endif
-  #endif
- 
- >#(user.name)</option>
- #endfor
- </select>
-</div>
+
 <button type="submit" class="btn btn-primary">#if(editing): Update #else: Add Acronym #endif</button>
 </form>
 
