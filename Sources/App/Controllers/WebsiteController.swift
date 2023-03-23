@@ -16,7 +16,8 @@ struct WebsiteController: RouteCollection {
         authSessionsRoutes.get("categories", ":categoryID", use: categoryHandler)
         authSessionsRoutes.get("categories", use: allCategoriesHandler)
         authSessionsRoutes.get("login", use: loginHandler)
-       
+        authSessionsRoutes.get("createuser", use: createUserHandler)
+        authSessionsRoutes.post("createuser", use: createUserPostHandler)
         let credentialsAuthRoutes = authSessionsRoutes.grouped(User.credentialsAuthenticator())
         credentialsAuthRoutes.post("login", use: loginPostHandler)
         
@@ -144,7 +145,21 @@ struct WebsiteController: RouteCollection {
             return req.view.render("login", LoginContext(title: "Log In")).encodeResponse(for: req)
         }
     }
+    func createUserHandler(_ req: Request) throws -> EventLoopFuture<View> {
+
+            let context = CreateUserContext(title: "Create Account")
+            return req.view.render("createUser", context)
+        
+    }
     
+    func createUserPostHandler(_ req: Request) throws -> EventLoopFuture<Response> {
+        let data = try req.content.decode(CreateUserData.self)
+        let user = User(name: data.name, username: data.username, password: try Bcrypt.hash(data.password))
+        return user.save(on: req.db).flatMapThrowing {
+            return req.redirect(to: "/login")
+            
+        }
+    }
 }
 
 struct IndexContext: Encodable {
@@ -182,6 +197,11 @@ struct AllCategoriesContext: Encodable {
 }
 
 struct CreateAcronymContext: Encodable{
+    let title: String
+    
+}
+
+struct CreateUserContext: Encodable{
     let title: String
     
 }

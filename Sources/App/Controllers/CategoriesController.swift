@@ -19,7 +19,7 @@ struct CategoriesController: RouteCollection {
         
         categoriesRoutes.get(":categoryID", "acronym", use: getAcronymsHandler)
       
-        
+        categoriesRoutes.delete(":categoryID", use: deletHandler)
     }
     
     
@@ -45,4 +45,10 @@ struct CategoriesController: RouteCollection {
         }
         
     }
+    
+    func deletHandler(_ req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        Category.find(req.parameters.get("categoryID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap { category in
+            category.delete(on: req.db).transform(to: .noContent)
+        }
+       }
 }

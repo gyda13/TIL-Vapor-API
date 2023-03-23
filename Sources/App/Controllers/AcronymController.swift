@@ -57,6 +57,7 @@ struct AcronymController: RouteCollection {
         Acronym.find(req.parameters.get("acronymID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap { acronym in
             acronym.delete(on: req.db).transform(to: .noContent)
         }
+        
        }
         
     func updateHandler(_ req: Request) throws -> EventLoopFuture<Acronym> {
@@ -119,5 +120,5 @@ struct AcronymController: RouteCollection {
 struct CreateAcronymData: Content {
     let short: String
     let long: String
-    let userID: UUID
+   
 }

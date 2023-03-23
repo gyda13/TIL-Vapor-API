@@ -16,7 +16,7 @@ struct UsersController: RouteCollection {
         usersRoutes.post( use: creatHandler)
         usersRoutes.get(":userID", use: getHandler)
         usersRoutes.get(":userID", "acronym", use: getAcronymHnadler)
-        
+        usersRoutes.delete(":userID", use: deletHandler)
         
         let basicAuthMiddleware = User.authenticator()
         let basicAuthGroup = usersRoutes.grouped(basicAuthMiddleware)
@@ -49,6 +49,11 @@ struct UsersController: RouteCollection {
         }
     }
     
+    func deletHandler(_ req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        User.find(req.parameters.get("userID"), on: req.db).unwrap(or: Abort(.notFound)).flatMap { user in
+            user.delete(on: req.db).transform(to: .noContent)
+        }
+       }
     
     func loginHandler(_ req: Request) throws -> EventLoopFuture<Token> {
         
@@ -65,3 +70,8 @@ struct UsersController: RouteCollection {
     
 }
 
+struct CreateUserData: Content {
+    let name: String
+    let username: String
+    let password: String
+}
