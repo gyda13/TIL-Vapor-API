@@ -1,0 +1,29 @@
+
+#extend("base"):
+
+#export("content"):
+<u><h1>Create Account</h1></u>
+
+<form method="post">
+
+<div class="mb-3">
+<label for="name" class="form-label">Name</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name"
+>
+</div>
+<div class="mb-3">
+<label for="username" class="form-label">User Name</label>
+<input type="text" class="form-control" id="username" name="username" placeholder="Enter Username"
+>
+</div>
+<div class="mb-3">
+<label for="password" class="form-label">Password</label>
+<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"
+>
+</div>
+<button type="submit" class="btn btn-primary"> Create Account </button>
+</form>
+<a href="/login"> Already  an account? Log In </a>
+
+#endexport
+#endextend

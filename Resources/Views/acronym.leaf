@@ -19,30 +19,12 @@ flex-direction: column;
     width: 250px;
     border-radius: 50%;
 }
-.shape:first-child{
-    background: linear-gradient(
-        #52b69a,
-        #76c893
-    );
-    left: -130px;
-    top: -50px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #1a759f,
-        #168aad
-    );
-    right: -60px;
-    bottom: -20px;
-}
+
 
 </style>
 
 </br></br>
      <div class="background">
-            <div class="shape"></div>
-                  <div class="shape"></div>
       </div>
       <div class="wrapper container mt-3">
   <div > <h1>#(acronym.short)</h1></div>
@@ -65,7 +47,7 @@ flex-direction: column;
   <div><p style="font-size: 20px;">Created by <a href="/users/#(user.id)" style="font-size: 20px;">#(user.name)</a></p></div>
    <form method="post" action="/acronym/#(acronym.id)/delete">
 <a class="btn btn-primary" href="/acronym/#(acronym.id)/edit" role="button">Edit</a>
- <input class="btn btn-primary" type="submit" value="Delete">
+ <input class="btn btn-danger" type="submit" value="Delete">
  </form>
    
    </div>

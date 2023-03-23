@@ -12,7 +12,7 @@
 >
 </div>
 <div class="mb-3">
-<label for="password" class="form-label">Meaning</label>
+<label for="password" class="form-label">Password</label>
 <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"
 
 >
@@ -20,6 +20,8 @@
 
 <button type="submit" class="btn btn-primary">Log In</button>
 </form>
+
+<a href="/createuser"> Dont have an account? Sign Up </a>
 
 #endexport
 #endextend

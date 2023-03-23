@@ -12,9 +12,12 @@ body{
 align-items: center;
 justify-content: center;
 min-height: 150vh;
-background-color: #184e77;
+background-color: #002B5B;
 }
+label {
+    color: #FFFFFF;
  
+}
 .background{
     width: 430px;
     height: 520px;
@@ -28,14 +31,6 @@ background-color: #184e77;
     width: 280px;
     position: absolute;
     border-radius: 50%;
-}
-.shape:first-child{
-    background: linear-gradient(
-        #52b69a,
-        #76c893
-    );
-    left: -400px;
-    bottom: -100px;
 }
 
 
